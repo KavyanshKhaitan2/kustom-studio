@@ -1,0 +1,197 @@
+{
+  "preset_info": {
+    "version": 13,
+    "title": "KWGT widget by Kavyansh",
+    "description": "",
+    "author": "kavyansh Khaitan ",
+    "width": 388,
+    "height": 184,
+    "features": "",
+    "release": 375410013,
+    "locked": false,
+    "pflags": 0
+  },
+  "preset_root": {
+    "internal_events": [
+      {
+        "action": "KUSTOM_ACTION"
+      }
+    ],
+    "internal_type": "RootLayerModule",
+    "config_scale_value": 73.21005,
+    "viewgroup_items": [
+      {
+        "internal_type": "StackLayerModule",
+        "internal_title": "Right Side - White Shape",
+        "config_stacking": "HORIZONTAL_CENTER",
+        "config_margin": -1.0,
+        "position_offset_x": 114.0,
+        "viewgroup_items": [
+          {
+            "internal_type": "ShapeModule",
+            "shape_type": "RTRIANGLE",
+            "shape_width": 40.0,
+            "shape_height": 40.0,
+            "shape_rotate_mode": "DEG90"
+          },
+          {
+            "internal_type": "ShapeModule",
+            "shape_type": "RECT",
+            "shape_width": 225.0,
+            "shape_height": 40.0,
+            "position_offset_x": 130.0
+          }
+        ]
+      },
+      {
+        "internal_type": "StackLayerModule",
+        "config_stacking": "HORIZONTAL_CENTER",
+        "config_margin": -1.0,
+        "position_offset_x": -109.0,
+        "internal_title": "Left Side - Dark Gray Shape",
+        "viewgroup_items": [
+          {
+            "internal_type": "ShapeModule",
+            "shape_type": "RECT",
+            "shape_width": 225.0,
+            "shape_height": 40.0,
+            "position_offset_x": 130.0,
+            "paint_color": "#FF505050"
+          },
+          {
+            "internal_type": "ShapeModule",
+            "shape_type": "RTRIANGLE",
+            "shape_width": 40.0,
+            "shape_height": 40.0,
+            "shape_rotate_mode": "DEG270",
+            "paint_color": "#FF505050"
+          }
+        ]
+      },
+      {
+        "internal_type": "StackLayerModule",
+        "internal_title": "Time",
+        "config_stacking": "HORIZONTAL_CENTER",
+        "config_margin": 50.0,
+        "position_offset_x": 12.0,
+        "viewgroup_items": [
+          {
+            "internal_type": "TextModule",
+            "internal_title": "Hour",
+            "text_expression": "$df(hh)$",
+            "text_family": "kfile://org.kustom.provider/fonts/Sarpanch.ttf",
+            "text_size": 40.0,
+            "fx_shadow": "OUTER",
+            "fx_shadow_blur": 1,
+            "fx_shadow_direction": 230,
+            "fx_shadow_distance": 5.0,
+            "position_offset_x": -40.0
+          },
+          {
+            "internal_type": "TextModule",
+            "internal_title": "Minute",
+            "text_expression": "$df(mm)$",
+            "text_family": "kfile://org.kustom.provider/fonts/Sarpanch.ttf",
+            "text_size": 40.0,
+            "fx_shadow": "OUTER",
+            "fx_shadow_blur": 1.0,
+            "fx_shadow_direction": 52,
+            "fx_shadow_distance": 5.0,
+            "position_offset_x": 47.0,
+            "paint_color": "#FF000000",
+            "fx_shadow_color": "#FFBDBDBD"
+          }
+        ]
+      },
+      {
+        "internal_type": "TextModule",
+        "internal_title": "Day",
+        "text_expression": "$df(EEE)$ $bi(level)$%",
+        "text_family": "kfile://org.kustom.provider/fonts/CutiveMono.ttf",
+        "text_width": 100.0,
+        "text_size": 35.0,
+        "fx_shadow": "OUTER",
+        "fx_shadow_blur": 40.0,
+        "fx_shadow_distance": 0.0,
+        "fx_shadow_color": "#FFFFFFFF",
+        "position_offset_x": -160.0
+      },
+      {
+        "internal_type": "TextModule",
+        "internal_title": "Date",
+        "text_expression": "$df(d MMM)$",
+        "text_family": "kfile://org.kustom.provider/fonts/CutiveMono.ttf",
+        "text_width": 100.0,
+        "text_size": 40.0,
+        "fx_shadow": "OUTER",
+        "fx_shadow_blur": 40.0,
+        "fx_shadow_distance": 0.0,
+        "position_offset_x": 171.0,
+        "text_align": "RIGHT",
+        "paint_color": "#FF000000"
+      },
+      {
+        "internal_type": "StackLayerModule",
+        "internal_title": "Year Progress",
+        "config_stacking": "VERTICAL_CENTER",
+        "position_offset_y": 60.0,
+        "viewgroup_items": [
+          {
+            "internal_type": "ProgressModule",
+            "internal_toggles": {
+              "progress_level": 10,
+              "progress_mode": 0,
+              "progress_max": 0
+            },
+            "internal_formulas": {
+              "progress_level": "$df(D)$"
+            },
+            "progress_progress": "CUSTOM",
+            "progress_max": 366.0,
+            "progress_count": 100.0
+          },
+          {
+            "internal_type": "TextModule",
+            "internal_toggles": {
+              "text_expression": 0
+            },
+            "text_expression": "Year progress",
+            "text_family": "kfile://org.kustom.provider/fonts/Sarpanch.ttf",
+            "text_size": 30.0
+          }
+        ]
+      },
+      {
+        "internal_type": "StackLayerModule",
+        "internal_title": "Month Progress",
+        "config_stacking": "VERTICAL_CENTER",
+        "position_offset_y": -60.0,
+        "viewgroup_items": [
+          {
+            "internal_type": "TextModule",
+            "internal_toggles": {
+              "text_expression": 0
+            },
+            "text_expression": "Month progress",
+            "text_family": "kfile://org.kustom.provider/fonts/Sarpanch.ttf",
+            "text_size": 30.0
+          },
+          {
+            "internal_type": "ProgressModule",
+            "internal_toggles": {
+              "progress_level": 10,
+              "progress_mode": 0,
+              "progress_max": 0
+            },
+            "internal_formulas": {
+              "progress_level": "$df(dd)$"
+            },
+            "progress_progress": "CUSTOM",
+            "progress_max": 30.0,
+            "progress_count": 100.0
+          }
+        ]
+      }
+    ]
+  }
+}

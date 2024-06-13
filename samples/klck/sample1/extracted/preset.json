@@ -1,0 +1,820 @@
+{
+  "preset_info": {
+    "version": 13,
+    "title": "newlockscreen",
+    "description": "My first KLCK!",
+    "author": "Kavyansh Khaitan",
+    "email": "kavyanshkhaitan11@gmail.com",
+    "width": 360,
+    "height": 800,
+    "xscreens": 2,
+    "yscreens": 2,
+    "features": "NOTIFICATIONS",
+    "release": 375410013,
+    "locked": false,
+    "pflags": 0
+  },
+  "preset_root": {
+    "internal_type": "RootLayerModule",
+    "internal_events": [
+      {
+        "type": "SCROLL_END",
+        "action": "KUSTOM_ACTION",
+        "scroll_dir": "TOP",
+        "kustom_action": "UNLOCK"
+      }
+    ],
+    "globals_list": {
+      "fpunlock": {
+        "index": 1,
+        "type": "SWITCH",
+        "title": "fpunlock",
+        "value": 1
+      },
+      "notif_i": {
+        "index": 4,
+        "type": "NUMBER",
+        "title": "notif_i",
+        "min": 0,
+        "max": 720,
+        "value": 0.0
+      },
+      "shchanim": {
+        "index": 5,
+        "type": "NUMBER",
+        "title": "shChAnim",
+        "description": "show charging animation ",
+        "value": "0",
+        "min": 0,
+        "max": 1,
+        "toggles": 10,
+        "global_formula": "$if(tf(bi(plugged), S) > -5, 1 ,0)$"
+      }
+    },
+    "internal_flows": [
+      {
+        "id": "F6zkzo1u",
+        "name": "anotif_i+1",
+        "t": [
+          {
+            "id": "TTDSp3Yl",
+            "type": "T_MANUAL"
+          }
+        ],
+        "a": [
+          {
+            "id": "TAsDOVED",
+            "type": "A_FORMULA",
+            "params": {
+              "formula": "$gv(notif_i)+1$"
+            }
+          },
+          {
+            "id": "TAOgLrug",
+            "type": "A_GLOBAL",
+            "params": {
+              "global": "notif_i"
+            }
+          }
+        ]
+      },
+      {
+        "id": "FBSSEWrm",
+        "name": "cnotif_i minus 1",
+        "t": [
+          {
+            "id": "TTA7iQvM",
+            "type": "T_MANUAL"
+          }
+        ],
+        "a": [
+          {
+            "id": "TA9NyISn",
+            "type": "A_FORMULA",
+            "params": {
+              "formula": "$gv(notif_i)-1$"
+            }
+          },
+          {
+            "id": "TANH8Eyz",
+            "type": "A_GLOBAL",
+            "params": {
+              "global": "notif_i"
+            }
+          }
+        ]
+      },
+      {
+        "id": "FPrVvImu",
+        "name": "bnotif_i RESET",
+        "t": [
+          {
+            "id": "TTjDSNbi",
+            "type": "T_MANUAL"
+          }
+        ],
+        "a": [
+          {
+            "id": "TARcJur4",
+            "type": "A_FORMULA",
+            "params": {
+              "formula": "0"
+            }
+          },
+          {
+            "id": "TARkcVvG",
+            "type": "A_GLOBAL",
+            "params": {
+              "global": "notif_i"
+            }
+          }
+        ]
+      },
+      {
+        "id": "F6zkzo1u",
+        "name": "Flow003",
+        "t": [],
+        "a": []
+      },
+      {
+        "id": "Fb9HIZKe",
+        "name": "show charging animation ",
+        "t": [
+          {
+            "id": "TTfFVB3q",
+            "type": "T_FORMULA",
+            "params": {
+              "formula": "$bi(charging)$"
+            }
+          }
+        ],
+        "a": [
+          {
+            "id": "TAXqOoTc",
+            "type": "A_FORMULA",
+            "params": {
+              "formula": "1"
+            }
+          },
+          {
+            "id": "TARcJur4",
+            "type": "A_GLOBAL",
+            "params": {
+              "global": "shchanim"
+            }
+          },
+          {
+            "id": "TAPKNyVc",
+            "type": "A_DELAY"
+          },
+          {
+            "id": "TAlvLfxB",
+            "type": "A_FORMULA",
+            "params": {
+              "formula": "0"
+            }
+          },
+          {
+            "id": "TAyb0Z1z",
+            "type": "A_GLOBAL",
+            "params": {
+              "global": "shchanim"
+            }
+          }
+        ]
+      }
+    ],
+    "internal_toggles": {
+      "Fb9HIZKe": 1
+    },
+    "viewgroup_items": [
+      {
+        "internal_type": "ShapeModule",
+        "shape_width": 1800.0,
+        "paint_color": "#FF4C4C4C"
+      },
+      {
+        "internal_type": "OverlapLayerModule",
+        "internal_title": "Clock",
+        "position_offset_y": -620.0,
+        "viewgroup_items": [
+          {
+            "internal_type": "ShapeModule",
+            "shape_type": "RECT",
+            "shape_width": 680.0,
+            "shape_height": 200.0,
+            "shape_corners": 72,
+            "paint_color": "#FF000000"
+          },
+          {
+            "internal_type": "StackLayerModule",
+            "internal_title": "Clock",
+            "position_offset_x": -100.0,
+            "config_stacking": "HORIZONTAL_CENTER",
+            "config_margin": 40.0,
+            "config_scale_value": 93.0,
+            "viewgroup_items": [
+              {
+                "internal_type": "TextModule",
+                "text_expression": "$df(hh:mm:ss)$",
+                "text_size": 100.0
+              },
+              {
+                "internal_type": "TextModule",
+                "text_expression": "[s=1][i]$df(EEEE)$[/i][/s]\n$df(d)$ [b]$df(MMMM)$[/b] $df(yyyy)$",
+                "text_size": 40.0,
+                "text_align": "CENTER"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "internal_type": "OverlapLayerModule",
+        "internal_title": "Battery",
+        "config_scale_value": 25.0,
+        "position_offset_x": -260.0,
+        "position_offset_y": -720.0,
+        "viewgroup_items": [
+          {
+            "internal_type": "FontIconModule",
+            "icon_icon": "battery_full",
+            "icon_size": 640.0,
+            "icon_rotate_mode": "DEG90",
+            "paint_color": "#FF2A2A2A",
+            "position_padding_left": 50.0
+          },
+          {
+            "internal_type": "ProgressModule",
+            "progress_level": 100.0,
+            "color_bgcolor": "#00FFFFFF",
+            "style_size": 530.0,
+            "style_height": 260.0
+          },
+          {
+            "internal_type": "StackLayerModule",
+            "config_stacking": "HORIZONTAL_CENTER",
+            "config_scale_value": 150.0,
+            "viewgroup_items": [
+              {
+                "internal_type": "TextModule",
+                "text_expression": "$bi(level)$%",
+                "text_size": 80.0,
+                "paint_color": "#FF000000",
+                "fx_shadow": "OUTER",
+                "fx_shadow_blur": 13.0,
+                "fx_shadow_direction": 0,
+                "fx_shadow_distance": 0,
+                "fx_shadow_color": "#FFFFFFFF"
+              },
+              {
+                "internal_type": "FontIconModule",
+                "internal_toggles": {
+                  "icon_icon": 10
+                },
+                "internal_formulas": {
+                  "icon_icon": "$if(bi(charging), battery-charging, battery )$"
+                },
+                "icon_set": "kfile://org.kustom.provider/icons/materialdesignicons.ttf",
+                "icon_icon": "battery-charging",
+                "icon_size": 100.0,
+                "paint_color": "#FF000000",
+                "paint_stroke": 47,
+                "fx_gradient_width": 71,
+                "fx_gradient_offset": 76,
+                "fx_shadow": "OUTER",
+                "fx_shadow_blur": 40.0,
+                "fx_shadow_direction": 359,
+                "fx_shadow_distance": 0,
+                "fx_shadow_color": "#FFFFFFFF"
+              }
+            ]
+          },
+          {
+            "internal_type": "FontIconModule",
+            "icon_icon": "battery_full",
+            "icon_size": 640.0,
+            "icon_rotate_mode": "DEG90",
+            "position_padding_left": 50.0,
+            "paint_mode": "MULTIPLY"
+          }
+        ]
+      },
+      {
+        "internal_type": "OverlapLayerModule",
+        "position_offset_y": 160.0,
+        "internal_title": "Notifications",
+        "viewgroup_items": [
+          {
+            "internal_type": "ShapeModule",
+            "shape_type": "RECT",
+            "shape_width": 680.0,
+            "shape_height": 1160.0,
+            "shape_corners": 58,
+            "paint_color": "#FF208BED"
+          },
+          {
+            "internal_type": "StackLayerModule",
+            "config_stacking": "VERTICAL_CENTER",
+            "viewgroup_items": [
+              {
+                "internal_type": "StackLayerModule",
+                "config_stacking": "HORIZONTAL_CENTER",
+                "position_padding_left": 50.0,
+                "position_padding_bottom": 50.0,
+                "internal_title": "Text + [Dismiss All]",
+                "viewgroup_items": [
+                  {
+                    "internal_type": "TextModule",
+                    "text_expression": "Notifications",
+                    "text_size": 50.0
+                  },
+                  {
+                    "internal_type": "OverlapLayerModule",
+                    "internal_title": "Dismiss All Button",
+                    "position_padding_left": 75.0,
+                    "internal_events": [
+                      {
+                        "type": "SINGLE_TAP",
+                        "action": "KUSTOM_ACTION",
+                        "kustom_action": "NOTIF_CLOSE_ALL"
+                      }
+                    ],
+                    "config_scale_value": 75.0,
+                    "viewgroup_items": [
+                      {
+                        "internal_type": "ShapeModule",
+                        "shape_type": "RECT",
+                        "shape_width": 260.0,
+                        "shape_height": 80.0,
+                        "shape_corners": 28,
+                        "paint_color": "#FF3F3F3F"
+                      },
+                      {
+                        "internal_type": "TextModule",
+                        "text_expression": "Dismiss all",
+                        "text_size": 40.0
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "internal_type": "OverlapLayerModule",
+                "internal_events": [
+                  {
+                    "type": "LONG_PRESS",
+                    "action": "KUSTOM_ACTION",
+                    "kustom_action": "NOTIF_CLOSE",
+                    "notification": "$gv(notif_i, 0)+0$"
+                  },
+                  {
+                    "type": "SINGLE_TAP",
+                    "action": "KUSTOM_ACTION",
+                    "kustom_action": "NOTIF_OPEN",
+                    "notification": "$gv(notif_i, 0)+0$"
+                  }
+                ],
+                "internal_toggles": {
+                  "config_visible": 10
+                },
+                "internal_formulas": {
+                  "config_visible": "$if(gv(notif_i, 0) < ni(count), ALWAYS, NEVER)$"
+                },
+                "config_visible": "IF_NOT_LOCKED",
+                "position_padding_bottom": 25.0,
+                "internal_title": "Notification 1",
+                "viewgroup_items": [
+                  {
+                    "internal_type": "ShapeModule",
+                    "shape_type": "RECT",
+                    "shape_width": 640.0,
+                    "shape_height": 220.0,
+                    "shape_corners": 59.0,
+                    "paint_color": "#FF131313"
+                  },
+                  {
+                    "internal_type": "StackLayerModule",
+                    "config_stacking": "HORIZONTAL_TOP",
+                    "config_margin": 40.0,
+                    "viewgroup_items": [
+                      {
+                        "internal_type": "StackLayerModule",
+                        "config_stacking": "VERTICAL_RIGHT",
+                        "config_margin": 9.0,
+                        "viewgroup_items": [
+                          {
+                            "internal_type": "BitmapModule",
+                            "internal_toggles": {
+                              "bitmap_bitmap": 10
+                            },
+                            "internal_formulas": {
+                              "bitmap_bitmap": "$ni(gv(notif_i, 0), icon)$"
+                            },
+                            "bitmap_width": 50.0
+                          },
+                          {
+                            "internal_type": "BitmapModule",
+                            "internal_toggles": {
+                              "bitmap_bitmap": 10
+                            },
+                            "internal_formulas": {
+                              "bitmap_bitmap": "$ni(gv(notif_i, 0), bicon)$"
+                            },
+                            "position_padding_left": 25.0
+                          }
+                        ]
+                      },
+                      {
+                        "internal_type": "StackLayerModule",
+                        "viewgroup_items": [
+                          {
+                            "internal_type": "TextModule",
+                            "text_expression": "[b]$tc(ell,ni(gv(notif_i, 0), title), 20)$[/b]",
+                            "text_size": 40.0,
+                            "text_width": 460.0
+                          },
+                          {
+                            "internal_type": "TextModule",
+                            "text_expression": "[s=1.2]$tc(reg, tc(ell, ni(gv(notif_i, 0), text), 100), \"\\n\", \" \")$[/s]\n$ni(0, desc)$",
+                            "text_size": 21.0,
+                            "text_size_type": "FIXED_WIDTH",
+                            "text_width": 420.0
+                          },
+                          {
+                            "internal_type": "TextModule",
+                            "text_expression": "Long press to dismiss"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "internal_type": "OverlapLayerModule",
+                "internal_events": [
+                  {
+                    "type": "LONG_PRESS",
+                    "action": "KUSTOM_ACTION",
+                    "kustom_action": "NOTIF_CLOSE",
+                    "notification": "$gv(notif_i, 0)+1$"
+                  },
+                  {
+                    "type": "SINGLE_TAP",
+                    "action": "KUSTOM_ACTION",
+                    "kustom_action": "NOTIF_OPEN",
+                    "notification": "$gv(notif_i, 0)+1$"
+                  }
+                ],
+                "internal_toggles": {
+                  "config_visible": 10
+                },
+                "internal_formulas": {
+                  "config_visible": "$if(gv(notif_i, 0)+1 < ni(count), ALWAYS, NEVER)$"
+                },
+                "config_visible": "IF_NOT_LOCKED",
+                "position_padding_bottom": 25.0,
+                "internal_title": "Notification 2",
+                "viewgroup_items": [
+                  {
+                    "internal_type": "ShapeModule",
+                    "shape_type": "RECT",
+                    "shape_width": 640.0,
+                    "shape_height": 220.0,
+                    "shape_corners": 59.0,
+                    "paint_color": "#FF131313"
+                  },
+                  {
+                    "internal_type": "StackLayerModule",
+                    "config_stacking": "HORIZONTAL_TOP",
+                    "config_margin": 40.0,
+                    "viewgroup_items": [
+                      {
+                        "internal_type": "StackLayerModule",
+                        "config_stacking": "VERTICAL_RIGHT",
+                        "config_margin": 9.0,
+                        "viewgroup_items": [
+                          {
+                            "internal_type": "BitmapModule",
+                            "internal_toggles": {
+                              "bitmap_bitmap": 10
+                            },
+                            "internal_formulas": {
+                              "bitmap_bitmap": "$ni(gv(notif_i, 0)+1, icon)$"
+                            },
+                            "bitmap_width": 50.0
+                          },
+                          {
+                            "internal_type": "BitmapModule",
+                            "internal_toggles": {
+                              "bitmap_bitmap": 10
+                            },
+                            "internal_formulas": {
+                              "bitmap_bitmap": "$ni(gv(notif_i, 0)+1, bicon)$"
+                            },
+                            "position_padding_left": 25.0
+                          }
+                        ]
+                      },
+                      {
+                        "internal_type": "StackLayerModule",
+                        "viewgroup_items": [
+                          {
+                            "internal_type": "TextModule",
+                            "text_expression": "[b]$tc(ell,ni(gv(notif_i, 0)+1, title), 20)$[/b]",
+                            "text_size": 40.0,
+                            "text_width": 460.0
+                          },
+                          {
+                            "internal_type": "TextModule",
+                            "text_expression": "[s=1.2]$tc(reg, tc(ell, ni(gv(notif_i, 0)+1, text), 100), \"\\n\", \" \")$[/s]\n$ni(0, desc)$",
+                            "text_size": 21.0,
+                            "text_size_type": "FIXED_WIDTH",
+                            "text_width": 420.0
+                          },
+                          {
+                            "internal_type": "TextModule",
+                            "text_expression": "Long press to dismiss"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "internal_type": "OverlapLayerModule",
+                "internal_events": [
+                  {
+                    "type": "LONG_PRESS",
+                    "action": "KUSTOM_ACTION",
+                    "kustom_action": "NOTIF_CLOSE",
+                    "notification": "$gv(notif_i, 0)+2$"
+                  },
+                  {
+                    "type": "SINGLE_TAP",
+                    "action": "KUSTOM_ACTION",
+                    "kustom_action": "NOTIF_OPEN",
+                    "notification": "$gv(notif_i, 0)+2$"
+                  }
+                ],
+                "internal_toggles": {
+                  "config_visible": 10
+                },
+                "internal_formulas": {
+                  "config_visible": "$if(gv(notif_i, 0)+2 < ni(count), ALWAYS, NEVER)$"
+                },
+                "config_visible": "IF_NOT_LOCKED",
+                "position_padding_bottom": 25.0,
+                "internal_title": "Notification 3",
+                "viewgroup_items": [
+                  {
+                    "internal_type": "ShapeModule",
+                    "shape_type": "RECT",
+                    "shape_width": 640.0,
+                    "shape_height": 220.0,
+                    "shape_corners": 59.0,
+                    "paint_color": "#FF131313"
+                  },
+                  {
+                    "internal_type": "StackLayerModule",
+                    "config_stacking": "HORIZONTAL_TOP",
+                    "config_margin": 40.0,
+                    "viewgroup_items": [
+                      {
+                        "internal_type": "StackLayerModule",
+                        "config_stacking": "VERTICAL_RIGHT",
+                        "config_margin": 9.0,
+                        "viewgroup_items": [
+                          {
+                            "internal_type": "BitmapModule",
+                            "internal_toggles": {
+                              "bitmap_bitmap": 10
+                            },
+                            "internal_formulas": {
+                              "bitmap_bitmap": "$ni(gv(notif_i, 0)+2, icon)$"
+                            },
+                            "bitmap_width": 50.0
+                          },
+                          {
+                            "internal_type": "BitmapModule",
+                            "internal_toggles": {
+                              "bitmap_bitmap": 10
+                            },
+                            "internal_formulas": {
+                              "bitmap_bitmap": "$ni(gv(notif_i, 0)+2, bicon)$"
+                            },
+                            "position_padding_left": 25.0
+                          }
+                        ]
+                      },
+                      {
+                        "internal_type": "StackLayerModule",
+                        "viewgroup_items": [
+                          {
+                            "internal_type": "TextModule",
+                            "text_expression": "[b]$tc(ell,ni(gv(notif_i, 0)+2, title), 20)$[/b]",
+                            "text_size": 40.0,
+                            "text_width": 460.0
+                          },
+                          {
+                            "internal_type": "TextModule",
+                            "text_expression": "[s=1.2]$tc(reg, tc(ell, ni(gv(notif_i, 0)+2, text), 100), \"\\n\", \" \")$[/s]\n$ni(0, desc)$",
+                            "text_size": 21.0,
+                            "text_size_type": "FIXED_WIDTH",
+                            "text_width": 420.0
+                          },
+                          {
+                            "internal_type": "TextModule",
+                            "text_expression": "Long press to dismiss"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "internal_type": "StackLayerModule",
+                "internal_title": "Navigation",
+                "config_stacking": "HORIZONTAL_CENTER",
+                "config_margin": 120.0,
+                "viewgroup_items": [
+                  {
+                    "internal_type": "OverlapLayerModule",
+                    "internal_title": "Button UP",
+                    "internal_events": [
+                      {
+                        "type": "SINGLE_TAP",
+                        "action": "TRIGGER_FLOW",
+                        "flow_id": "FBSSEWrm"
+                      }
+                    ],
+                    "viewgroup_items": [
+                      {
+                        "internal_type": "ShapeModule",
+                        "shape_width": 120.0,
+                        "shape_corners": 33,
+                        "paint_color": "#FF141111"
+                      },
+                      {
+                        "internal_type": "FontIconModule",
+                        "icon_set": "kfile://org.kustom.provider/icons/materialdesignicons.ttf",
+                        "icon_icon": "arrow-up-drop-circle",
+                        "internal_events": [
+                          {
+                            "type": "SINGLE_TAP",
+                            "action": "TRIGGER_FLOW",
+                            "flow_id": "F6zkzo1u"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "internal_type": "OverlapLayerModule",
+                    "internal_title": "Button RESET",
+                    "internal_events": [
+                      {
+                        "type": "LONG_PRESS",
+                        "action": "TRIGGER_FLOW",
+                        "flow_id": "FPrVvImu"
+                      }
+                    ],
+                    "viewgroup_items": [
+                      {
+                        "internal_type": "ShapeModule",
+                        "shape_width": 120.0,
+                        "shape_corners": 33,
+                        "paint_color": "#FF141111"
+                      },
+                      {
+                        "internal_type": "FontIconModule",
+                        "icon_set": "kfile://org.kustom.provider/icons/materialdesignicons.ttf",
+                        "icon_icon": "lock-reset",
+                        "internal_events": [
+                          {
+                            "type": "SINGLE_TAP",
+                            "action": "TRIGGER_FLOW",
+                            "flow_id": "F6zkzo1u"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "internal_type": "OverlapLayerModule",
+                    "internal_title": "Button DOWN",
+                    "internal_events": [
+                      {
+                        "type": "SINGLE_TAP",
+                        "action": "TRIGGER_FLOW",
+                        "flow_id": "F6zkzo1u"
+                      }
+                    ],
+                    "viewgroup_items": [
+                      {
+                        "internal_type": "ShapeModule",
+                        "shape_width": 120.0,
+                        "shape_corners": 33,
+                        "paint_color": "#FF141111"
+                      },
+                      {
+                        "internal_type": "FontIconModule",
+                        "icon_set": "kfile://org.kustom.provider/icons/materialdesignicons.ttf",
+                        "icon_icon": "arrow-up-drop-circle",
+                        "internal_events": [
+                          {
+                            "type": "SINGLE_TAP",
+                            "action": "TRIGGER_FLOW",
+                            "flow_id": "F6zkzo1u"
+                          }
+                        ],
+                        "icon_rotate_mode": "DEG180"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "internal_type": "TextModule",
+            "text_expression": "Notification Index: $gv(notif_i)$",
+            "position_padding_bottom": 975.0
+          }
+        ]
+      },
+      {
+        "internal_type": "OverlapLayerModule",
+        "internal_title": "Charging Animation Overlay",
+        "internal_toggles": {
+          "config_visible": 10
+        },
+        "internal_formulas": {
+          "config_visible": "$if(gv(shChAnim, 0) > 0, ALWAYS, NEVER)$"
+        },
+        "viewgroup_items": [
+          {
+            "internal_type": "ShapeModule",
+            "shape_width": 2000.0,
+            "paint_color": "#C0424242"
+          },
+          {
+            "internal_type": "StackLayerModule",
+            "config_stacking": "VERTICAL_CENTER",
+            "position_padding_top": 925.0,
+            "viewgroup_items": [
+              {
+                "internal_type": "OverlapLayerModule",
+                "position_padding_bottom": 75.0,
+                "viewgroup_items": [
+                  {
+                    "internal_type": "ProgressModule",
+                    "style_style": "CIRCLE",
+                    "style_size": 320.0,
+                    "style_height": 30.0
+                  },
+                  {
+                    "internal_type": "StackLayerModule",
+                    "config_stacking": "VERTICAL_CENTER",
+                    "viewgroup_items": [
+                      {
+                        "internal_type": "FontIconModule",
+                        "icon_set": "kfile://org.kustom.provider/icons/meteo.ttf",
+                        "icon_icon": "lightning39"
+                      },
+                      {
+                        "internal_type": "TextModule",
+                        "text_expression": "$bi(level)$%",
+                        "text_size": 80.0
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "internal_type": "StackLayerModule",
+                "config_stacking": "VERTICAL_CENTER",
+                "config_scale_value": 275.0,
+                "viewgroup_items": [
+                  {
+                    "internal_type": "FontIconModule",
+                    "icon_set": "kfile://org.kustom.provider/icons/materialdesignicons.ttf",
+                    "icon_icon": "usb-port"
+                  },
+                  {
+                    "internal_type": "ShapeModule",
+                    "shape_type": "RECT",
+                    "shape_height": 10.0
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

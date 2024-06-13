@@ -1,0 +1,31 @@
+{
+  "preset_info": {
+    "version": 13,
+    "title": "newshipplane",
+    "description": "hhh",
+    "author": "hhh",
+    "email": "ghh",
+    "width": 330,
+    "height": 384,
+    "features": "",
+    "release": 375410013,
+    "locked": false,
+    "pflags": 0
+  },
+  "preset_root": {
+    "internal_events": [
+      {
+        "action": "KUSTOM_ACTION"
+      }
+    ],
+    "internal_type": "RootLayerModule",
+    "config_scale_value": 65.97938,
+    "viewgroup_items": [
+      {
+        "internal_type": "BitmapModule",
+        "bitmap_bitmap": "kfile://org.kustom.provider/bitmaps/IMG6c5e6ebff959f9e8ff6b4bbe7f580ca7",
+        "bitmap_width": 825.0
+      }
+    ]
+  }
+}
